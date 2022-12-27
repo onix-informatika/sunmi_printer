@@ -85,6 +85,7 @@ public class SunmiPrinterMethod {
     public void initPrinter() {
         try {
             _woyouService.printerInit(this._callback());
+            Log.d(TAG, "initPrinter");
         } catch (RemoteException e) {
             e.printStackTrace();
             Log.e(TAG, "initPrinter RE: " + e.getMessage());
@@ -100,6 +101,7 @@ public class SunmiPrinterMethod {
     public int updatePrinter() {
         try {
             final int status = _woyouService.updatePrinterState();
+            Log.d(TAG, "updatePrinter: " + status);
             return status;
         } catch (RemoteException e) {
             e.printStackTrace();
