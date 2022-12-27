@@ -86,9 +86,14 @@ public class SunmiPrinterMethod {
         try {
             _woyouService.printerInit(this._callback());
         } catch (RemoteException e) {
+            e.printStackTrace();
             Log.e(TAG, "initPrinter RE: " + e.getMessage());
         } catch (NullPointerException e) {
+            e.printStackTrace();
             Log.e(TAG, "initPrinter NPE: " + e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.e(TAG, "initPrinter E: " + e.getMessage());
         }
     }
 
@@ -97,10 +102,16 @@ public class SunmiPrinterMethod {
             final int status = _woyouService.updatePrinterState();
             return status;
         } catch (RemoteException e) {
+            e.printStackTrace();
             Log.e(TAG, "updatePrinter RE: " + e.getMessage());
             return 0; // error
         } catch (NullPointerException e) {
+            e.printStackTrace();
             Log.e(TAG, "updatePrinter NPE: " + e.getMessage());
+            return 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.e(TAG, "updatePrinter E: " + e.getMessage());
             return 0;
         }
     }
