@@ -35,37 +35,39 @@ public class SunmiPrinterMethod {
             try {
                 _woyouService = IWoyouService.Stub.asInterface(service);
                 String serviceVersion = _woyouService.getServiceVersion();
-                Toast
-                        .makeText(
-                                _context,
-                                "Sunmi Printer Service Connected. Version :" + serviceVersion,
-                                Toast.LENGTH_LONG
-                        )
-                        .show();
+                // unnecessary, can be made into a callback to dart if needed. Let the user deal with it
+                // Toast
+                //         .makeText(
+                //                 _context,
+                //                 "Sunmi Printer Service Connected. Version :" + serviceVersion,
+                //                 Toast.LENGTH_LONG
+                //         )
+                //         .show();
 
 
             } catch (RemoteException e) {
                 e.printStackTrace();
             } catch (NullPointerException e) {
-
-                Toast
-                        .makeText(
-                                _context,
-                                "Sunmi Printer Service Not Found",
-                                Toast.LENGTH_LONG
-                        ).show();
+                // unnecessary, can be made into a callback to dart if needed. Let the user deal with it
+                // Toast
+                //         .makeText(
+                //                 _context,
+                //                 "Sunmi Printer Service Not Found",
+                //                 Toast.LENGTH_LONG
+                //         ).show();
             }
         }
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
-            Toast
-                    .makeText(
-                            _context,
-                            "Sunmi Printer Service Disconnected",
-                            Toast.LENGTH_LONG
-                    )
-                    .show();
+            // unnecessary, can be made into a callback to dart if needed. Let the user deal with it
+            // Toast
+            //         .makeText(
+            //                 _context,
+            //                 "Sunmi Printer Service Disconnected",
+            //                 Toast.LENGTH_LONG
+            //         )
+            //         .show();
         }
     };
 
@@ -84,8 +86,9 @@ public class SunmiPrinterMethod {
         try {
             _woyouService.printerInit(this._callback());
         } catch (RemoteException e) {
+            Log.e(TAG, "initPrinter RE: " + e.getMessage());
         } catch (NullPointerException e) {
-
+            Log.e(TAG, "initPrinter NPE: " + e.getMessage());
         }
     }
 
@@ -94,8 +97,10 @@ public class SunmiPrinterMethod {
             final int status = _woyouService.updatePrinterState();
             return status;
         } catch (RemoteException e) {
+            Log.e(TAG, "updatePrinter RE: " + e.getMessage());
             return 0; // error
         } catch (NullPointerException e) {
+            Log.e(TAG, "updatePrinter NPE: " + e.getMessage());
             return 0;
         }
     }
