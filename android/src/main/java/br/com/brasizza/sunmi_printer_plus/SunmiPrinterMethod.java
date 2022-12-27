@@ -213,18 +213,6 @@ public class SunmiPrinterMethod {
         }
     }
 
-
-    public Boolean cutPaper() {
-        try {
-            _woyouService.cutPaper(this._callback());
-            return true;
-        } catch (RemoteException e) {
-            return false;
-        } catch (NullPointerException e) {
-            return false;
-        }
-    }
-
     public String getPrinterSerialNo() {
 
         try {
@@ -246,61 +234,6 @@ public class SunmiPrinterMethod {
             return "";// error;
         } catch (NullPointerException e) {
             return "NOT FOUND";
-        }
-    }
-
-    public int getPrinterPaper() {
-        try {
-
-            final int paper = _woyouService.getPrinterPaper();
-            return paper;
-        } catch (RemoteException e) {
-            return 1; // error;
-        } catch (NullPointerException e) {
-            return 1;
-        }
-    }
-
-    public int getPrinterMode() {
-        try {
-            final int mode = _woyouService.getPrinterMode();
-            return mode;
-        } catch (RemoteException e) {
-            return 3; // error;
-        } catch (NullPointerException e) {
-            return 3;
-        }
-    }
-
-    public Boolean openDrawer() {
-        try {
-            _woyouService.openDrawer(this._callback());
-            return true;
-        } catch (RemoteException e) {
-            return false;
-        } catch (NullPointerException e) {
-            return false;
-        }
-    }
-
-
-    public Boolean drawerStatus() {
-        try {
-            return  _woyouService.getDrawerStatus();
-        } catch (RemoteException e) {
-            return false;
-        } catch (NullPointerException e) {
-            return false;
-        }
-    }
-
-    public int timesOpened() {
-        try {
-            return  _woyouService.getOpenDrawerTimes();
-        } catch (RemoteException e) {
-            return 0;
-        } catch (NullPointerException e) {
-            return 0;
         }
     }
 
