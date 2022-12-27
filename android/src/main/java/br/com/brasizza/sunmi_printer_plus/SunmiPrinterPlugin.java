@@ -177,31 +177,6 @@ public class SunmiPrinterPlugin implements FlutterPlugin, MethodCallHandler {
         result.success(true);
 
         break;
-      case "GET_PRINTER_MODE":
-        final int mode_code = sunmiPrinterMethod.getPrinterMode();
-
-        String mode_desc = "";
-
-        // response printer status
-        switch (mode_code) {
-          case 0:
-            mode_desc = "NORMAL_MODE";
-            break;
-          case 1:
-            mode_desc = "BLACK_LABEL_MODE";
-            break;
-          case 2:
-            mode_desc = "LABEL_MODE";
-            break;
-          case 3:
-            mode_desc = "ERROR";
-            break;
-          default:
-            mode_desc = "EXCEPTION";
-        }
-
-        result.success(mode_desc);
-        break;
       // case "LABEL_LOCATE":
       //   sunmiPrinterMethod.labelLocate();
       //   result.success(true);
@@ -220,22 +195,6 @@ public class SunmiPrinterPlugin implements FlutterPlugin, MethodCallHandler {
         sunmiPrinterMethod.commitPrinterBuffer();
         result.success(true);
         break;
-      case "CUT_PAPER":
-        sunmiPrinterMethod.cutPaper();
-        result.success(true);
-        break;
-      case "OPEN_DRAWER":
-        sunmiPrinterMethod.openDrawer();
-        result.success(true);
-        break;
-
-        case "DRAWER_OPENED":
-        result.success(sunmiPrinterMethod.timesOpened());
-        break;
-      
-      case "DRAWER_STATUS":
-        result.success(sunmiPrinterMethod.drawerStatus());
-      break;  
       case "PRINT_ROW":
         String colsStr = call.argument("cols");
 
@@ -272,10 +231,6 @@ public class SunmiPrinterPlugin implements FlutterPlugin, MethodCallHandler {
       case "PRINTER_VERSION":
         final String printer_verison = sunmiPrinterMethod.getPrinterVersion();
         result.success(printer_verison);
-        break;
-      case "PAPER_SIZE":
-        final int paper = sunmiPrinterMethod.getPrinterPaper();
-        result.success(paper);
         break;
       default:
         result.notImplemented();

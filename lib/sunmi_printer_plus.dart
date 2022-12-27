@@ -112,23 +112,6 @@ class SunmiPrinter {
     return statusMsg;
   }
 
-  ///*getPrinterMode*
-  ///
-  ///This method will return what mode your printer to print in one way or other, like label mode or normal mode
-  static Future<PrinterMode> getPrinterMode() async {
-    final String mode = await _channel.invokeMethod('GET_PRINTER_MODE');
-    switch (mode) {
-      case 'NORMAL_MODE':
-        return PrinterMode.NORMAL_MODE;
-      case 'BLACK_LABEL_MODE':
-        return PrinterMode.BLACK_LABEL_MODE;
-      case 'LABEL_MODE':
-        return PrinterMode.LABEL_MODE;
-      default:
-        return PrinterMode.UNKNOWN;
-    }
-  }
-
   ///*printText*
   ///
   ///This method will print a simple text in your printer
@@ -356,34 +339,6 @@ class SunmiPrinter {
     await _channel.invokeMethod("COMMIT_PRINTER_BUFFER");
   }
 
-  ///*cut*
-  ///
-  ///This method will  cut the paper
-  static Future<void> cut() async {
-    await _channel.invokeMethod("CUT_PAPER");
-  }
-
-  ///*openDrawer*
-  ///
-  ///This method will open drawer
-  static Future<void> openDrawer() async {
-    await _channel.invokeMethod("OPEN_DRAWER");
-  }
-
-  ///*drawerStatus*
-  ///
-  ///This method will  check the status of the drawer true/false (connect disconnect)
-  static Future<bool> drawerStatus() async {
-    return await _channel.invokeMethod("DRAWER_STATUS") ?? false;
-  }
-
-  ///*drawerTimesOpen*
-  ///
-  ///This method will  check how many times the drawer was open
-  static Future<int> drawerTimesOpen() async {
-    return await _channel.invokeMethod("DRAWER_OPENED") ?? 0;
-  }
-
   ///*exitTransactionPrint*
   ///
   ///This method will close the transaction
@@ -436,14 +391,6 @@ class SunmiPrinter {
   static Future<void> resetFontSize() async {
     Map<String, dynamic> arguments = <String, dynamic>{"size": 24};
     await _channel.invokeMethod("FONT_SIZE", arguments);
-  }
-
-  ///*paperSize*
-  ///
-  /// Get the paper size , because they can change the printers between 56 and 80mm
-  static Future<int> paperSize() async {
-    int? _size = await _channel.invokeMethod("PAPER_SIZE");
-    return _paperize[_size ?? 0];
   }
 
   ///*serialNumber*
