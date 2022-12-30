@@ -4,18 +4,22 @@ version '1.0'
 buildscript {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.1.1'
+        classpath 'com.android.tools.build:gradle:7.1.3'
     }
 }
 
 rootProject.allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
+        maven {
+            url 'http://download.flutter.io'
+            allowInsecureProtocol = true
+        }
     }
 
      gradle.projectsEvaluated {
@@ -45,5 +49,6 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.annotation:annotation:1.3.0'
+    implementation 'androidx.annotation:annotation:1.5.0'
+    api "io.flutter:flutter_embedding_debug:1.0.0-8f2221fbef28b478debb78dd233f5250b220ca99"
 }
