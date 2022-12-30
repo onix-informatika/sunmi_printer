@@ -1,3 +1,5 @@
+package android
+
 group 'br.com.brasizza.sunmi_printer_plus'
 version '1.0'
 

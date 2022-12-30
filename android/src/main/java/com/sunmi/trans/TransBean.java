@@ -1,4 +1,4 @@
-package com.sunmi.trans;
+package android.src.main.java.com.sunmi.trans;
 
 import android.os.Parcel;
 import android.os.Parcelable;

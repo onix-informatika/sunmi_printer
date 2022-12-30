@@ -1,4 +1,4 @@
-package br.com.brasizza.sunmi_printer_plus;
+package android.src.main.java.br.com.brasizza.sunmi_printer_plus;
 
 import android.graphics.Bitmap;
 
