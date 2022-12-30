@@ -37,4 +37,9 @@ android {
     lintOptions {
         disable 'InvalidPackage'
     }
+    sourceSets {
+        main {
+            aidl.srcDirs = ['src/main/aidl']
+        }
+    }
 }
